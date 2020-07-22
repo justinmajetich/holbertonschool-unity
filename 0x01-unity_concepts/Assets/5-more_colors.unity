@@ -136,7 +136,7 @@ PrefabInstance:
     - target: {fileID: 1691485503659725848, guid: 9b521aedd859340feafb943470984cde,
         type: 3}
       propertyPath: m_TagString
-      value: Obstacles
+      value: Untagged
       objectReference: {fileID: 0}
     - target: {fileID: 1691485503659725860, guid: 9b521aedd859340feafb943470984cde,
         type: 3}
@@ -230,7 +230,7 @@ PrefabInstance:
     - target: {fileID: 1691485503659725848, guid: 9b521aedd859340feafb943470984cde,
         type: 3}
       propertyPath: m_TagString
-      value: Obstacles
+      value: Untagged
       objectReference: {fileID: 0}
     - target: {fileID: 1691485503659725860, guid: 9b521aedd859340feafb943470984cde,
         type: 3}
@@ -509,7 +509,7 @@ PrefabInstance:
     - target: {fileID: 1691485503659725848, guid: 9b521aedd859340feafb943470984cde,
         type: 3}
       propertyPath: m_TagString
-      value: Obstacles
+      value: Untagged
       objectReference: {fileID: 0}
     - target: {fileID: 1691485503659725860, guid: 9b521aedd859340feafb943470984cde,
         type: 3}
@@ -686,7 +686,7 @@ PrefabInstance:
     - target: {fileID: 1691485503659725848, guid: 9b521aedd859340feafb943470984cde,
         type: 3}
       propertyPath: m_TagString
-      value: Obstacles
+      value: Untagged
       objectReference: {fileID: 0}
     - target: {fileID: 1691485503659725860, guid: 9b521aedd859340feafb943470984cde,
         type: 3}
@@ -780,7 +780,7 @@ PrefabInstance:
     - target: {fileID: 1691485503659725848, guid: 9b521aedd859340feafb943470984cde,
         type: 3}
       propertyPath: m_TagString
-      value: Obstacles
+      value: Untagged
       objectReference: {fileID: 0}
     - target: {fileID: 1691485503659725860, guid: 9b521aedd859340feafb943470984cde,
         type: 3}
