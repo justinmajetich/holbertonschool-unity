@@ -136,7 +136,7 @@ PrefabInstance:
     - target: {fileID: 1691485503659725848, guid: 9b521aedd859340feafb943470984cde,
         type: 3}
       propertyPath: m_TagString
-      value: Untagged
+      value: Obstacles
       objectReference: {fileID: 0}
     - target: {fileID: 1691485503659725860, guid: 9b521aedd859340feafb943470984cde,
         type: 3}
@@ -227,6 +227,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Textured Ball
       objectReference: {fileID: 0}
+    - target: {fileID: 1691485503659725848, guid: 9b521aedd859340feafb943470984cde,
+        type: 3}
+      propertyPath: m_TagString
+      value: Obstacles
+      objectReference: {fileID: 0}
     - target: {fileID: 1691485503659725860, guid: 9b521aedd859340feafb943470984cde,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -304,7 +309,7 @@ PrefabInstance:
     - target: {fileID: 1691485503659725848, guid: 9b521aedd859340feafb943470984cde,
         type: 3}
       propertyPath: m_TagString
-      value: Untagged
+      value: Obstacles
       objectReference: {fileID: 0}
     - target: {fileID: 1691485503659725860, guid: 9b521aedd859340feafb943470984cde,
         type: 3}
@@ -583,7 +588,7 @@ PrefabInstance:
     - target: {fileID: 1691485503659725848, guid: 9b521aedd859340feafb943470984cde,
         type: 3}
       propertyPath: m_TagString
-      value: Untagged
+      value: Obstacles
       objectReference: {fileID: 0}
     - target: {fileID: 1691485503659725860, guid: 9b521aedd859340feafb943470984cde,
         type: 3}
@@ -760,7 +765,7 @@ PrefabInstance:
     - target: {fileID: 1691485503659725848, guid: 9b521aedd859340feafb943470984cde,
         type: 3}
       propertyPath: m_TagString
-      value: Untagged
+      value: Obstacles
       objectReference: {fileID: 0}
     - target: {fileID: 1691485503659725860, guid: 9b521aedd859340feafb943470984cde,
         type: 3}
@@ -854,7 +859,7 @@ PrefabInstance:
     - target: {fileID: 1691485503659725848, guid: 9b521aedd859340feafb943470984cde,
         type: 3}
       propertyPath: m_TagString
-      value: Untagged
+      value: Obstacles
       objectReference: {fileID: 0}
     - target: {fileID: 1691485503659725860, guid: 9b521aedd859340feafb943470984cde,
         type: 3}
