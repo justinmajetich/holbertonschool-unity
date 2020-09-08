@@ -4641,7 +4641,7 @@ GameObject:
   - component: {fileID: 1104711397}
   - component: {fileID: 1104711396}
   m_Layer: 0
-  m_Name: Cylinder
+  m_Name: Face
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4716,8 +4716,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1104711395}
   m_LocalRotation: {x: 0.55098724, y: -0, z: -0, w: 0.83451366}
-  m_LocalPosition: {x: 0.001, y: 0.664, z: 0.433}
-  m_LocalScale: {x: 0.60936, y: -0.06067215, z: 0.60936}
+  m_LocalPosition: {x: 0, y: 0.65, z: 0.4}
+  m_LocalScale: {x: 0.6, y: 0.06, z: 0.6}
   m_Children: []
   m_Father: {fileID: 64335979306710438}
   m_RootOrder: 0
@@ -8299,7 +8299,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2143965374}
   m_LocalRotation: {x: 0.078459114, y: -0, z: -0, w: 0.99691737}
-  m_LocalPosition: {x: 0, y: 1.25, z: -6.25}
+  m_LocalPosition: {x: 0, y: 2.5, z: -6.25}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 64335979306710438}
@@ -8416,7 +8416,7 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 2100000, guid: 31321ba15b8f8eb4c954353edc038b1d, type: 2}
+      objectReference: {fileID: 2100000, guid: 0854e30237c92d049aa5ec36613c42da, type: 2}
     - target: {fileID: 8665609718687780387, guid: 85d0c376e8d28495abb8035d4ca37924,
         type: 3}
       propertyPath: m_Name
