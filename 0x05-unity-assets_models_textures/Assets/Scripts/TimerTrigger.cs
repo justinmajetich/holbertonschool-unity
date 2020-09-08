@@ -13,6 +13,7 @@ public class TimerTrigger : MonoBehaviour
     {
         if (other.tag == "Player")
             EnableTimer();
+            timer.Run();
     }
 
     private void EnableTimer()

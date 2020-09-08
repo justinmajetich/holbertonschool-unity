@@ -5,19 +5,11 @@ using UnityEngine.UI;
 public class Timer : MonoBehaviour
 {
     public Text timerText;
-    private float time;
+    private float time = 0;
     private float minutes;
     private float seconds;
     private bool timerIsRunning = false;
 
-    // Start is called before the first frame update
-    void Start()
-    {
-        time = 0;
-        timerIsRunning = true;
-    }
-
-    // Update is called once per frame
     void Update()
     {
         if (timerIsRunning)
@@ -38,14 +30,23 @@ public class Timer : MonoBehaviour
         }
     }
 
+    public void Run()
+    {
+        timerIsRunning = true;
+    }
+
     public void Pause()
     {
         timerIsRunning = false;
     }
 
+    // Stop timer and reset time to zero
     public void Reset()
     {
         timerIsRunning = false;
         time = minutes = seconds = 0;
+        timerText.text = "0:00.00";
+        timerText.color = Color.white;
+        timerText.fontSize = 48;
     }
 }
