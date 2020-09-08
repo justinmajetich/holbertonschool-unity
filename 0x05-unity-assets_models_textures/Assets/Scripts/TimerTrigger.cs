@@ -11,9 +11,12 @@ public class TimerTrigger : MonoBehaviour
 
     public void OnTriggerExit(Collider other)
     {
+        Debug.Log(other.tag);
         if (other.tag == "Player")
+        {
             EnableTimer();
             timer.Run();
+        }
     }
 
     private void EnableTimer()

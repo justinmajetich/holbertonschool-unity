@@ -89,8 +89,6 @@ public class PlayerController : MonoBehaviour
         // Check if out of bounds
         if (transform.position.y < -45)
             RespawnPlayer();
-
-        Debug.Log(velocity.y);
     }
     
     private void ApplyGravity()
