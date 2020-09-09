@@ -5,21 +5,28 @@ public class PlayerController : MonoBehaviour
  
     public Transform playerSpawn;
     public Transform playerCamera;
-
+    [Range(0,10)]
     public float jumpHeight = 6f;
+    [Range(0,4)]
+    public float heldJumpAdditive = 2f;
+    [Tooltip("Sets a threshold based on player's Y velocity to limit how long a held jump will add to current jump velocity.")]
+    [Range(-1,5)]
+    public float heldJumpThreshold = 1f;
+    public float jumpTimer = 0f;
     public float walkSpeed = 8f;
-    [Tooltip("0 = max penalty; 1 = no penalty.")]
+    private bool isJumping = false;
+
+    [Tooltip("Dampens airborne movement (0 = max penalty; 1 = no penalty).")]
     [Range(0,1)]
     public float airborneDampener = 0.5f;
     public float rotateSpeed = 15f;
     public float gravity = 1f;
 
     private CharacterController controller;
-    private Vector3 velocity = new Vector3(0, 0, 0);
+    public Vector3 velocity = new Vector3(0, 0, 0);
     private Timer playerTimer;
     private bool isRespawning;
     private Vector3 jumpVelocity;
-    private bool isJumping = false;
 
 
     void Start()
@@ -61,7 +68,12 @@ public class PlayerController : MonoBehaviour
 
             // End jump state when player returns to the ground.
             if (isJumping)
+            {
                 isJumping = false;
+
+                // Reset jump timer.
+                jumpTimer = 0;
+            }
 
             // Assign default Y velocity for grounded state.
             // This helps avoid issues with ground detection and mesh overlap.
@@ -70,19 +82,6 @@ public class PlayerController : MonoBehaviour
             // Get left/right/forward/backward input
             velocity.x = Input.GetAxis("Horizontal") * walkSpeed;
             velocity.z = Input.GetAxis("Vertical") * walkSpeed;
-
-            // Get jump input
-            if (Input.GetButtonDown("Jump") && controller.isGrounded)
-            {
-                isJumping = true;
-
-                velocity.y = jumpHeight;
-
-                // Strip current velocity vector of speed scalar when recording jump velocity.
-                // jumpVelocity stores an initial jump trajectory which can be altered combined
-                // with any new X/Z movement controls received while player is still airborne.
-                jumpVelocity = new Vector3(velocity.x / walkSpeed, velocity.y, velocity.z / walkSpeed);
-            }
         }
         else // Airborne movement
         {
@@ -99,12 +98,43 @@ public class PlayerController : MonoBehaviour
             ApplyGravity();
         }
 
+        GetJump(); // Checks and applies jump input to Y velocity.
+
         // Convert local space movement to world space vector.
         Vector3 move = transform.TransformDirection(velocity);
 
         // Apply movement to character controller, if there's movement to apply.
         if (move.magnitude >= 0.1f)
             controller.Move(move * Time.deltaTime);
+    }
+
+    private void GetJump()
+    {
+        // Get input to initiate base jump mechanic.
+        if (Input.GetButtonDown("Jump") && controller.isGrounded)
+        {
+            isJumping = true;
+            velocity.y = jumpHeight;
+
+            // Strip current velocity vector of speed scalar when recording jump velocity.
+            // jumpVelocity stores an initial jump trajectory which can be altered combined
+            // with any new X/Z movement controls received while player is still airborne.
+            jumpVelocity = new Vector3(velocity.x / walkSpeed, velocity.y, velocity.z / walkSpeed);
+        }
+        
+        // Dynamically add to jump velocity the longer jump button is held.
+        // Additional jump velocity will added as long as overall Y velocity
+        // remains greater than given threshold (i.e. at or around jump's peak).
+        if (Input.GetButton("Jump") && velocity.y > heldJumpThreshold)
+        {
+            // Increment timer to track jump time.
+            jumpTimer += Time.deltaTime;
+
+            // Increase jump velocity dynamically over time.
+            // Jump additive is divided by the duration of the jump button press.
+            // This produces an inverse correlation between jump time and jump additive.
+            velocity.y += (heldJumpAdditive / jumpTimer) * Time.deltaTime;
+        }
     }
 
     private void ApplyGravity()
