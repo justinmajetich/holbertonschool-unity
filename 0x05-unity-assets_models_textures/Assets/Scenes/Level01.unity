@@ -173,7 +173,7 @@ MonoBehaviour:
   walkSpeed: 10
   airborneDampener: 0.5
   rotateSpeed: 175
-  gravity: 1.2
+  gravity: 1.1
   velocity: {x: 0, y: 0, z: 0}
 --- !u!4 &766745 stripped
 Transform:
@@ -4019,13 +4019,13 @@ Transform:
   - {fileID: 1643800569}
   - {fileID: 319486450}
   - {fileID: 526250614}
-  - {fileID: 1990950095}
   - {fileID: 1567822391}
+  - {fileID: 1990950095}
   - {fileID: 80987777}
   - {fileID: 892553279}
   - {fileID: 1618156323}
-  - {fileID: 1677039847}
   - {fileID: 1033673966}
+  - {fileID: 1677039847}
   - {fileID: 1499299257}
   - {fileID: 620132776}
   m_Father: {fileID: 1555091105}
@@ -5382,7 +5382,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &442637590
 Transform:
   m_ObjectHideFlags: 0
@@ -22359,7 +22359,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8693916622321400764}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: da9eacc4b0157459b9258a626da1427f, type: 3}
   m_Name: 
@@ -22546,7 +22546,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1946733623
 RectTransform:
   m_ObjectHideFlags: 0
