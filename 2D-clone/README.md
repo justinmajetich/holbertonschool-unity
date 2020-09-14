@@ -1,5 +1,5 @@
 # Unity - 2D Game
-A 2D platformer/shooter. Currently, in an early MVP stage.
+A 2D platformer/shooter. Currently, in a prototype stage. All assets are placeholder and from free packages off the Unity Assets Store.
 
 Player 1 Controls:
 - Movement: A/D
@@ -12,3 +12,5 @@ Player 2 Controls:
 - Jump: Up Arrow
 - Crouch: Down Arrow
 - Shoot: Left CTRL or Numpad 0
+
+Press ESCAPE for Menu.

@@ -14,6 +14,20 @@ public class GameController : MonoBehaviour
         menu.GetComponent<Canvas>().enabled = false;
     }
 
+    void Update()
+    {
+        if (Input.GetButtonDown("Cancel"))
+        {
+            if (!menu.GetComponent<Canvas>().enabled)
+                menu.GetComponent<Canvas>().enabled = true;
+            else
+                menu.GetComponent<Canvas>().enabled = false;
+        }
+            
+
+
+    }
+
     public void GameOver()
     {
         menu.GetComponent<Canvas>().enabled = true;
