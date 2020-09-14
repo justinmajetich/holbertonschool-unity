@@ -10,6 +10,7 @@ public class PlayerHealth : MonoBehaviour
     public float health = 5f;
     private Transform healthBar;
     private Vector3 initialHealthBarScale;
+    public GameObject gameController;
 
     void Awake()
     {
@@ -20,7 +21,10 @@ public class PlayerHealth : MonoBehaviour
     void Update()
     {
         if (health <= 0)
+        {
             Destroy(gameObject);
+            gameController.GetComponent<GameController>().GameOver();
+        }
     }
 
     /// <summary>
