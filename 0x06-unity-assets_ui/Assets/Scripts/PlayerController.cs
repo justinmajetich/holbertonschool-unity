@@ -28,6 +28,8 @@ public class PlayerController : MonoBehaviour
     private Timer playerTimer;
     private bool isRespawning;
     private Vector3 jumpVelocity;
+    [Tooltip("This variable allows the player input to be discontinued while pause menu is active.")]
+    public bool inputEnabled = true;
 
 
     void Start()
@@ -48,7 +50,8 @@ public class PlayerController : MonoBehaviour
     void Update()
     {
         // Rotates player transform according to the mouse X axis.
-        transform.Rotate(0f, Input.GetAxis("Mouse X") * rotateSpeed * Time.deltaTime, 0f);
+        if (inputEnabled)
+            transform.Rotate(0f, Input.GetAxis("Mouse X") * rotateSpeed * Time.deltaTime, 0f);
 
         // New movement input is applied to the velocity variable.
         MovePlayer();
@@ -81,18 +84,24 @@ public class PlayerController : MonoBehaviour
             velocity.y = -10f;
 
             // Get left/right/forward/backward input
-            velocity.x = Input.GetAxis("Horizontal") * walkSpeed;
-            velocity.z = Input.GetAxis("Vertical") * walkSpeed;
+            if (inputEnabled)
+            {
+                velocity.x = Input.GetAxis("Horizontal") * walkSpeed;
+                velocity.z = Input.GetAxis("Vertical") * walkSpeed;
+            }
         }
         else // Airborne movement
         {
             if (!isRespawning)
             {
-                // This dampens the influence of movement controls on the player while airborne.
-                // 1. Add current vector to new dampened input vector.
-                // 2. Re-apply speed scalar. 
-                velocity.x = ((jumpVelocity.x) + Input.GetAxis("Horizontal")  * airborneDampener) * walkSpeed;
-                velocity.z = ((jumpVelocity.z) + Input.GetAxis("Vertical") * airborneDampener) * walkSpeed;
+                if (inputEnabled)
+                {
+                    // This dampens the influence of movement controls on the player while airborne.
+                    // 1. Add current vector to new dampened input vector.
+                    // 2. Re-apply speed scalar. 
+                    velocity.x = ((jumpVelocity.x) + Input.GetAxis("Horizontal")  * airborneDampener) * walkSpeed;
+                    velocity.z = ((jumpVelocity.z) + Input.GetAxis("Vertical") * airborneDampener) * walkSpeed;
+                }
             }
 
             // Apply gravity effect to player's Y velocity.
@@ -112,7 +121,7 @@ public class PlayerController : MonoBehaviour
     private void GetJump()
     {
         // Get input to initiate base jump mechanic.
-        if (Input.GetButtonDown("Jump") && controller.isGrounded)
+        if (inputEnabled && Input.GetButtonDown("Jump") && controller.isGrounded)
         {
             isJumping = true;
             velocity.y = jumpHeight;
@@ -126,7 +135,7 @@ public class PlayerController : MonoBehaviour
         // Dynamically add to jump velocity the longer jump button is held.
         // Additional jump velocity will added as long as overall Y velocity
         // remains greater than given threshold (i.e. at or around jump's peak).
-        if (Input.GetButton("Jump") && velocity.y > heldJumpThreshold)
+        if (inputEnabled && Input.GetButton("Jump") && velocity.y > heldJumpThreshold)
         {
             // Increment timer to track jump time.
             jumpTimer += Time.deltaTime;

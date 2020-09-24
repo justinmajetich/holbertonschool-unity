@@ -3,14 +3,16 @@
 public class CameraController : MonoBehaviour
 {
     public Transform player;
-    
+    public bool inputEnabled = true;
+    public bool isInverted = false;
+
     [Range(1,10)]
     public float rotateSpeed = 0.5f;
     private float mouseX;
     private float mouseY;
     private float cameraY;
     private float lastPlayerY;
-
+    
     private Vector3 cameraOffset;
 
     void Start()
@@ -24,7 +26,13 @@ public class CameraController : MonoBehaviour
 
     void LateUpdate()
     {
-        mouseY = -Input.GetAxis("Mouse Y");
+        if (inputEnabled)
+            GetMouseInput();
+    }
+
+    void GetMouseInput()
+    {
+        mouseY = Input.GetAxis("Mouse Y") * (isInverted ? 1 : -1);
 
         cameraY += mouseY;
 
