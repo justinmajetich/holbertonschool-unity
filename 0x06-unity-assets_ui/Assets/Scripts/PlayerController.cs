@@ -5,7 +5,7 @@ public class PlayerController : MonoBehaviour
  
     public Transform playerSpawn;
     public Transform playerCamera;
-    public float yBounds = -35f;
+    public float yBounds = -30f;
     [Range(0,20)]
     public float jumpHeight = 12f;
     [Range(0,4)]
@@ -20,7 +20,7 @@ public class PlayerController : MonoBehaviour
     [Tooltip("Dampens airborne movement (0 = max penalty; 1 = no penalty).")]
     [Range(0,1)]
     public float airborneDampener = 0.5f;
-    private float rotateSpeed = 175f;
+    public float rotateSpeed = 150f;
     public float gravity = 1f;
 
     private CharacterController controller;
@@ -78,7 +78,7 @@ public class PlayerController : MonoBehaviour
 
             // Assign default Y velocity for grounded state.
             // This helps avoid issues with ground detection and mesh overlap.
-            velocity.y = -controller.stepOffset / Time.deltaTime;
+            velocity.y = -10f;
 
             // Get left/right/forward/backward input
             velocity.x = Input.GetAxis("Horizontal") * walkSpeed;
