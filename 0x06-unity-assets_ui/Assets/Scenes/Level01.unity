@@ -842,6 +842,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: WinCanvas
       objectReference: {fileID: 0}
+    - target: {fileID: 3556540345100136820, guid: 903d61da54c5d4a398ee13086731a193,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3556540345100136824, guid: 903d61da54c5d4a398ee13086731a193,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -946,6 +951,31 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Pivot.y
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3556540345261090981, guid: 903d61da54c5d4a398ee13086731a193,
+        type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3556540345261090981, guid: 903d61da54c5d4a398ee13086731a193,
+        type: 3}
+      propertyPath: m_SizeDelta.x
+      value: -100
+      objectReference: {fileID: 0}
+    - target: {fileID: 3556540345261090981, guid: 903d61da54c5d4a398ee13086731a193,
+        type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3556540345261090981, guid: 903d61da54c5d4a398ee13086731a193,
+        type: 3}
+      propertyPath: m_SizeDelta.y
+      value: -100
+      objectReference: {fileID: 0}
+    - target: {fileID: 8200803764773791272, guid: 903d61da54c5d4a398ee13086731a193,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 903d61da54c5d4a398ee13086731a193, type: 3}
