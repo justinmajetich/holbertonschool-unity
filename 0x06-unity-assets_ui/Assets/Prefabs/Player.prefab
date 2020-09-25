@@ -127,7 +127,7 @@ MonoBehaviour:
   walkSpeed: 9
   airborneDampener: 0.5
   rotateSpeed: 125
-  gravity: 0.9
+  gravity: 0.6
   velocity: {x: 0, y: 0, z: 0}
   inputEnabled: 1
 --- !u!114 &8558465377652495356
@@ -143,6 +143,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   timerText: {fileID: 0}
+  finalTime: {fileID: 0}
 --- !u!114 &8558465379032401655
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -169,6 +170,7 @@ GameObject:
   - component: {fileID: 8512181328389928672}
   - component: {fileID: 8512181328389928605}
   - component: {fileID: 8512181328389928604}
+  - component: {fileID: 4889336889395193902}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -288,6 +290,22 @@ MonoBehaviour:
   inputEnabled: 1
   isInverted: 0
   rotateSpeed: 5
+--- !u!114 &4889336889395193902
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8512181328389928673}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 29480e1a581c84ce29b98621aa3f754c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  minDistance: 1
+  maxDistance: 4
+  smooth: 10
+  distance: 0
 --- !u!1 &8512181328693045436
 GameObject:
   m_ObjectHideFlags: 0

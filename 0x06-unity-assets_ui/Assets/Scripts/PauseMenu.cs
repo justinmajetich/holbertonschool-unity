@@ -8,6 +8,7 @@ public class PauseMenu : MonoBehaviour
     private PlayerController playerController;
     private CameraController cameraController;
     public GameObject menu;
+    public GameObject winCanvas;
 
     void Start()
     {
@@ -18,9 +19,8 @@ public class PauseMenu : MonoBehaviour
 
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Escape))
+        if (Input.GetKeyDown(KeyCode.Escape) && !winCanvas.activeSelf)
         {
-            Debug.Log("ESC pressed.");
             if (isPaused)
                 Resume();
             else

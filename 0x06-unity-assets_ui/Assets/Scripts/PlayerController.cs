@@ -43,7 +43,6 @@ public class PlayerController : MonoBehaviour
         isRespawning = true;
 
         // Set cursor settings
-        // Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
     }
 

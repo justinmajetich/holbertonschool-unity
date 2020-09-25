@@ -5,10 +5,20 @@ using UnityEngine.UI;
 public class Timer : MonoBehaviour
 {
     public Text timerText;
+    public Text finalTime;
     private float time = 0;
     private float minutes;
     private float seconds;
     private bool timerIsRunning = false;
+    private PlayerController playerController;
+    private CameraController cameraController;
+
+
+    void Start()
+    {
+        playerController = GameObject.FindWithTag("Player").GetComponent<PlayerController>();
+        cameraController = GameObject.FindWithTag("MainCamera").GetComponent<CameraController>();
+    }
 
     void Update()
     {
@@ -48,5 +58,18 @@ public class Timer : MonoBehaviour
         timerText.text = "0:00.00";
         timerText.color = Color.white;
         timerText.fontSize = 48;
+    }
+
+    public void Win()
+    {
+        Pause();
+        
+        // Disable player input controls and zero-out velocity.
+        playerController.inputEnabled = false;
+        playerController.velocity = Vector3.zero;
+        cameraController.inputEnabled = false;
+        Cursor.visible = true;
+
+        finalTime.text = $"{minutes.ToString()}:{time.ToString("00.##")}";
     }
 }

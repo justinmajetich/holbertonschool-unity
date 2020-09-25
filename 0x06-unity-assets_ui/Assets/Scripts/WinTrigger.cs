@@ -4,14 +4,22 @@ using UnityEngine;
 public class WinTrigger : MonoBehaviour
 {
     public Text timerText;
+    private Timer timer;
+    public GameObject winCanvas;
+
+
+    void Start()
+    {
+        timer = GameObject.FindWithTag("Player").GetComponent<Timer>();
+    }
 
     void OnTriggerEnter(Collider other)
     {
         if (other.tag == "Player")
         {
-            other.gameObject.GetComponent<Timer>().Pause();
-            timerText.color = Color.green;
-            timerText.fontSize = 60;
+            timer.Win();
+            timerText.enabled = false;
+            winCanvas.SetActive(true);
         }
     }
 }
