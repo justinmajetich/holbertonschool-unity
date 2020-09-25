@@ -73,6 +73,8 @@ public class PauseMenu : MonoBehaviour
 
     public void Options()
     {
+        // Save current scene to PlayerPrefs for back reference.
+        PlayerPrefs.SetInt(PlayerPrefKeys.previousScene, SceneManager.GetActiveScene().buildIndex);
         SceneManager.LoadScene(4);
     }
 }

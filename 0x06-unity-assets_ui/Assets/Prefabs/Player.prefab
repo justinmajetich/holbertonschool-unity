@@ -129,6 +129,7 @@ MonoBehaviour:
   rotateSpeed: 125
   gravity: 0.9
   velocity: {x: 0, y: 0, z: 0}
+  inputEnabled: 1
 --- !u!114 &8558465377652495356
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -263,7 +264,7 @@ MonoBehaviour:
     m_Bits: 1
   m_VolumeTrigger: {fileID: 0}
   m_RenderPostProcessing: 0
-  m_Antialiasing: 0
+  m_Antialiasing: 2
   m_AntialiasingQuality: 2
   m_StopNaN: 0
   m_Dithering: 0
@@ -284,6 +285,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   player: {fileID: 7112077032604249412}
+  inputEnabled: 1
+  isInverted: 0
   rotateSpeed: 5
 --- !u!1 &8512181328693045436
 GameObject:

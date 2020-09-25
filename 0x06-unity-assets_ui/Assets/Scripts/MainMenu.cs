@@ -10,6 +10,10 @@ public class MainMenu : MonoBehaviour
 
     public void Options()
     {
+        // Save current scene to PlayerPrefs for back reference.
+        PlayerPrefs.SetInt(PlayerPrefKeys.previousScene, SceneManager.GetActiveScene().buildIndex);
+
+        // Load Options menu.
         SceneManager.LoadScene(4);
     }
 
