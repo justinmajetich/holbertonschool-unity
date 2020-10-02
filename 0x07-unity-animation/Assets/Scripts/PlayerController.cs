@@ -57,15 +57,15 @@ public class PlayerController : MonoBehaviour
         {
             animator.SetBool("isRunning", isRunning);
             animator.SetBool("isJumping", isJumping);
-            
-            bool isFalling = (transform.position.y < fallThreshold.position.y);
-            animator.SetBool("isFalling", (isFalling || isRespawning));
         }
         else // This keep animations from looping endlessly behind the win screen.
         {
             animator.SetBool("isRunning", false);
             animator.SetBool("isJumping", false);
         }
+
+        bool isFalling = (transform.position.y < fallThreshold.position.y);
+        animator.SetBool("isFalling", (isFalling || isRespawning));
 
 
         // New movement input is applied to the velocity variable.
@@ -205,6 +205,7 @@ public class PlayerController : MonoBehaviour
         transform.position = playerSpawn.position;
 
         isRespawning = true;
+        inputEnabled = false;
 
         // Reset player timer.
         playerTimer.Reset();

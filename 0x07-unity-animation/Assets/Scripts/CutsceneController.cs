@@ -9,6 +9,7 @@ public class CutsceneController : MonoBehaviour
     public GameObject timerCanvas;
     public GameObject menuController;
     private PlayerController playerController;
+    public string animationName;
     public bool skipAnimation = false;
 
     void Start()
@@ -19,7 +20,7 @@ public class CutsceneController : MonoBehaviour
 
     void Update()
     {
-        if (skipAnimation || !animator.GetCurrentAnimatorStateInfo(0).IsName("Intro01"))
+        if (skipAnimation || !animator.GetCurrentAnimatorStateInfo(0).IsName(animationName))
         {
             mainCamera.SetActive(true);
             playerController.enabled = true;
