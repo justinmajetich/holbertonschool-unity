@@ -5,7 +5,7 @@ public class PlayerController : MonoBehaviour
  
     public Transform playerSpawn;
     public Transform playerCamera;
-    public float yBounds = -35f;
+    public float yBounds = -30f;
     [Range(0,20)]
     public float jumpHeight = 12f;
     [Range(0,4)]
@@ -20,7 +20,7 @@ public class PlayerController : MonoBehaviour
     [Tooltip("Dampens airborne movement (0 = max penalty; 1 = no penalty).")]
     [Range(0,1)]
     public float airborneDampener = 0.5f;
-    private float rotateSpeed = 175f;
+    public float rotateSpeed = 150f;
     public float gravity = 1f;
 
     private CharacterController controller;
@@ -28,6 +28,8 @@ public class PlayerController : MonoBehaviour
     private Timer playerTimer;
     private bool isRespawning;
     private Vector3 jumpVelocity;
+    [Tooltip("This variable allows the player input to be discontinued while pause menu is active.")]
+    public bool inputEnabled = true;
 
 
     void Start()
@@ -41,14 +43,14 @@ public class PlayerController : MonoBehaviour
         isRespawning = true;
 
         // Set cursor settings
-        // Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
     }
 
     void Update()
     {
         // Rotates player transform according to the mouse X axis.
-        transform.Rotate(0f, Input.GetAxis("Mouse X") * rotateSpeed * Time.deltaTime, 0f);
+        if (inputEnabled)
+            transform.Rotate(0f, Input.GetAxis("Mouse X") * rotateSpeed * Time.deltaTime, 0f);
 
         // New movement input is applied to the velocity variable.
         MovePlayer();
@@ -78,21 +80,27 @@ public class PlayerController : MonoBehaviour
 
             // Assign default Y velocity for grounded state.
             // This helps avoid issues with ground detection and mesh overlap.
-            velocity.y = -controller.stepOffset / Time.deltaTime;
+            velocity.y = -10f;
 
             // Get left/right/forward/backward input
-            velocity.x = Input.GetAxis("Horizontal") * walkSpeed;
-            velocity.z = Input.GetAxis("Vertical") * walkSpeed;
+            if (inputEnabled)
+            {
+                velocity.x = Input.GetAxis("Horizontal") * walkSpeed;
+                velocity.z = Input.GetAxis("Vertical") * walkSpeed;
+            }
         }
         else // Airborne movement
         {
             if (!isRespawning)
             {
-                // This dampens the influence of movement controls on the player while airborne.
-                // 1. Add current vector to new dampened input vector.
-                // 2. Re-apply speed scalar. 
-                velocity.x = ((jumpVelocity.x) + Input.GetAxis("Horizontal")  * airborneDampener) * walkSpeed;
-                velocity.z = ((jumpVelocity.z) + Input.GetAxis("Vertical") * airborneDampener) * walkSpeed;
+                if (inputEnabled)
+                {
+                    // This dampens the influence of movement controls on the player while airborne.
+                    // 1. Add current vector to new dampened input vector.
+                    // 2. Re-apply speed scalar. 
+                    velocity.x = ((jumpVelocity.x) + Input.GetAxis("Horizontal")  * airborneDampener) * walkSpeed;
+                    velocity.z = ((jumpVelocity.z) + Input.GetAxis("Vertical") * airborneDampener) * walkSpeed;
+                }
             }
 
             // Apply gravity effect to player's Y velocity.
@@ -112,7 +120,7 @@ public class PlayerController : MonoBehaviour
     private void GetJump()
     {
         // Get input to initiate base jump mechanic.
-        if (Input.GetButtonDown("Jump") && controller.isGrounded)
+        if (inputEnabled && Input.GetButtonDown("Jump") && controller.isGrounded)
         {
             isJumping = true;
             velocity.y = jumpHeight;
@@ -126,7 +134,7 @@ public class PlayerController : MonoBehaviour
         // Dynamically add to jump velocity the longer jump button is held.
         // Additional jump velocity will added as long as overall Y velocity
         // remains greater than given threshold (i.e. at or around jump's peak).
-        if (Input.GetButton("Jump") && velocity.y > heldJumpThreshold)
+        if (inputEnabled && Input.GetButton("Jump") && velocity.y > heldJumpThreshold)
         {
             // Increment timer to track jump time.
             jumpTimer += Time.deltaTime;

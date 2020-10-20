@@ -3,14 +3,16 @@
 public class CameraController : MonoBehaviour
 {
     public Transform player;
-    
+    public bool inputEnabled = true;
+    public bool isInverted = false;
+
     [Range(1,10)]
     public float rotateSpeed = 0.5f;
     private float mouseX;
     private float mouseY;
     private float cameraY;
     private float lastPlayerY;
-
+    
     private Vector3 cameraOffset;
 
     void Start()
@@ -18,13 +20,22 @@ public class CameraController : MonoBehaviour
         // Take camera offset based on initial position of player and camera
         cameraOffset = player.position - transform.position;
 
+        // Check settings for Y axis inversion.
+        isInverted = PlayerPrefs.GetInt(PlayerPrefKeys.invertY) == 1 ? true : false;
+
         cameraY = transform.position.y;
         lastPlayerY = player.position.y;
     }
 
     void LateUpdate()
     {
-        mouseY = -Input.GetAxis("Mouse Y");
+        if (inputEnabled)
+            GetMouseInput();
+    }
+
+    void GetMouseInput()
+    {
+        mouseY = Input.GetAxis("Mouse Y") * (isInverted ? -1 : 1);
 
         cameraY += mouseY;
 
@@ -34,7 +45,7 @@ public class CameraController : MonoBehaviour
 
         // Constrain camera movement along Y axis 
         float playerY = player.position.y;
-        cameraY = Mathf.Clamp(cameraY, playerY - 3, playerY + 7);
+        cameraY = Mathf.Clamp(cameraY, playerY - 0.85f, playerY + 8f);
 
         // Combine mouse Y movement with tracking of player Y movement for smoother follow
         cameraY += (playerY - lastPlayerY) * 0.5f;
