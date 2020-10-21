@@ -26,7 +26,11 @@ public class PlayerController : MonoBehaviour
     public float heldJumpAdditive = 3f;
     public float jumpTimer = 0f;
     private bool isJumping = false;
-    private bool isRunning = false; // isRunning only serves to inform the animator.
+
+    // isRunning only serves to inform the animator and audio controller.
+    public bool isRunning = false;
+    public bool isFalling = false;
+    public bool madeImpact = false;
 
 
     [Tooltip("Sets a threshold based on player's Y velocity to limit how long a held jump will add to current jump velocity.")]
@@ -52,6 +56,8 @@ public class PlayerController : MonoBehaviour
 
     void Update()
     {
+        isRunning = (velocity.z != 0 && controller.isGrounded);
+
         // Send info to animation controller.
         if (inputEnabled)
         {
@@ -64,9 +70,8 @@ public class PlayerController : MonoBehaviour
             animator.SetBool("isJumping", false);
         }
 
-        bool isFalling = (transform.position.y < fallThreshold.position.y);
+        isFalling = (transform.position.y < fallThreshold.position.y);
         animator.SetBool("isFalling", (isFalling || isRespawning));
-
 
         // New movement input is applied to the velocity variable.
         MovePlayer();
@@ -83,7 +88,14 @@ public class PlayerController : MonoBehaviour
         {
             // End respawn state when player has touched ground.
             if (isRespawning)
+            {
+                madeImpact = true;
                 isRespawning = false;
+            }
+            else
+            {
+                madeImpact = false;
+            }
 
             // End jump state when player returns to the ground.
             if (isJumping)
@@ -118,8 +130,6 @@ public class PlayerController : MonoBehaviour
                 // Take greatest input signal and apply to velocity.
                 float forward = vertical > horizontal ? vertical : horizontal;
                 velocity.z = forward * walkSpeed;
-
-                isRunning = (velocity.z != 0);
             }
         }
         else // Airborne movement
