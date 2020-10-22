@@ -10,6 +10,7 @@ public class PlayerAudio : MonoBehaviour
     public AudioClip footstepsRunningGrass;
     public AudioClip footstepsLandingGrass;
     public AudioClip wilheimScream;
+    private bool screamHasPlayed = false;
 
 
     void Start()
@@ -37,19 +38,27 @@ public class PlayerAudio : MonoBehaviour
 
         if (playerController.isFalling)
         {
-            if (!audioSource.isPlaying)
+            if (!audioSource.isPlaying && !screamHasPlayed)
             {
                 audioSource.clip = wilheimScream;
+                audioSource.loop = false;
                 audioSource.outputAudioMixerGroup = master.FindMatchingGroups("Falling")[0];
                 audioSource.Play();
+                screamHasPlayed = true;
             }
         }
 
         if (playerController.madeImpact)
         {
+            screamHasPlayed = false;
+
+            if (!audioSource.isPlaying)
+            {
                 audioSource.clip = footstepsLandingGrass;
+                audioSource.loop = false;
                 audioSource.outputAudioMixerGroup = master.FindMatchingGroups("Landing")[0];
                 audioSource.Play();
+            }
         }
     }
 }

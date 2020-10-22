@@ -5,18 +5,28 @@ using UnityEngine.SceneManagement;
 public class OptionsMenu : MonoBehaviour
 {
     Toggle invertYToggle;
+    Slider bgmSlider;
+    Slider sfxSlider;
+
 
     void Start()
     {   
         // Initialize any unset PlayerPref settings.
         InitializeSettings();
 
-        // Get reference to UI toggle.
+        // Get reference to UI toggle and sliders.
         invertYToggle = GameObject.Find("InvertYToggle").GetComponent<Toggle>();
+        bgmSlider = GameObject.Find("BGMSlider").GetComponent<Slider>();
+        sfxSlider = GameObject.Find("SFXSlider").GetComponent<Slider>();
 
-        // Retrieve inversion setting from disk to set toggle starting state.
+
+        // Retrieve inversion settings from disk to set toggle starting state.
         // (0 = not inverted, 1 = inverted).
         invertYToggle.isOn = PlayerPrefs.GetInt(PlayerPrefKeys.invertY) == 1 ? true : false;
+        
+        // Retrieve slider values from disk storage.
+        bgmSlider.value = PlayerPrefs.GetFloat(PlayerPrefKeys.bgmVolume);
+        sfxSlider.value = PlayerPrefs.GetFloat(PlayerPrefKeys.sfxVolume);
 
         // Show cursor.
         Cursor.visible = true;
@@ -33,6 +43,8 @@ public class OptionsMenu : MonoBehaviour
     {
         // Update PlayerPrefs with current settings.
         PlayerPrefs.SetInt(PlayerPrefKeys.invertY, (invertYToggle.isOn ? 1 : 0));
+        PlayerPrefs.SetFloat(PlayerPrefKeys.bgmVolume, bgmSlider.value);
+        PlayerPrefs.SetFloat(PlayerPrefKeys.sfxVolume, sfxSlider.value);
     }
 
     private void InitializeSettings()
@@ -43,5 +55,11 @@ public class OptionsMenu : MonoBehaviour
 
         if (!PlayerPrefs.HasKey(PlayerPrefKeys.previousScene))
             PlayerPrefs.SetInt(PlayerPrefKeys.previousScene, 0);
+
+        if (!PlayerPrefs.HasKey(PlayerPrefKeys.bgmVolume))
+            PlayerPrefs.SetFloat(PlayerPrefKeys.bgmVolume, 0.25f);
+
+        if (!PlayerPrefs.HasKey(PlayerPrefKeys.sfxVolume))
+            PlayerPrefs.SetFloat(PlayerPrefKeys.sfxVolume, 0.75f);
     }
 }

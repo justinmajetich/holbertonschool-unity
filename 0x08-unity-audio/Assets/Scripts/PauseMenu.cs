@@ -7,6 +7,7 @@ public class PauseMenu : MonoBehaviour
     private Timer timer;
     private PlayerController playerController;
     private CameraController cameraController;
+    private MusicController musicController;
     public GameObject menu;
     public GameObject winCanvas;
 
@@ -15,6 +16,7 @@ public class PauseMenu : MonoBehaviour
         timer = GameObject.FindWithTag("Player").GetComponent<Timer>();
         playerController = GameObject.FindWithTag("Player").GetComponent<PlayerController>();
         cameraController = GameObject.FindWithTag("MainCamera").GetComponent<CameraController>();
+        musicController = GameObject.Find("BGM").GetComponent<MusicController>();
     }
 
     void Update()
@@ -42,6 +44,9 @@ public class PauseMenu : MonoBehaviour
         // Set menu canvas to appear.
         menu.SetActive(true);
 
+        // Transition to menu audio
+        musicController.TransitionToMenu();
+
         // Reveal cursor.
         Cursor.visible = true;
 
@@ -60,6 +65,9 @@ public class PauseMenu : MonoBehaviour
         // Run timer.
         if (timer != null)
             timer.Run();
+
+        // Transition from menu audio
+        musicController.TransitionFromMenu();
 
         // Hide cursor.
         Cursor.visible = false;

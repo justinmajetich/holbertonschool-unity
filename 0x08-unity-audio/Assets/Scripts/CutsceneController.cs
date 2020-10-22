@@ -9,6 +9,7 @@ public class CutsceneController : MonoBehaviour
     public GameObject timerCanvas;
     public GameObject menuController;
     private PlayerController playerController;
+    private MusicController musicController;
     public string animationName;
     public bool skipAnimation = false;
 
@@ -16,6 +17,7 @@ public class CutsceneController : MonoBehaviour
     {
         animator = gameObject.GetComponent<Animator>();
         playerController = GameObject.FindWithTag("Player").GetComponent<PlayerController>();
+        musicController = GameObject.Find("BGM").GetComponent<MusicController>();
     }
 
     void Update()
@@ -27,6 +29,7 @@ public class CutsceneController : MonoBehaviour
             menuController.SetActive(true);
             timerCanvas.SetActive(true);
             gameObject.SetActive(false);
+            musicController.TransitionFromCutscene();
         }
     }
 }
