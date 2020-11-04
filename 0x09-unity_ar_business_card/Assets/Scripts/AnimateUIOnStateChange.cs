@@ -5,11 +5,12 @@ public class AnimateUIOnStateChange : MonoBehaviour
 {
     private Animator animator;
     private CanvasScaler canvasScaler;
-    private int introHash;
+    private AudioSource audio;
 
     private void Awake() {
         animator = GetComponent<Animator>();
         canvasScaler = GetComponent<CanvasScaler>();
+        audio = GetComponent<AudioSource>();
     }
 
     private void Start() {
@@ -18,11 +19,13 @@ public class AnimateUIOnStateChange : MonoBehaviour
 
     public void PlayIntro() {
         animator.SetBool("targetHasBeenFound", true);
-        canvasScaler.dynamicPixelsPerUnit += 1;
-        canvasScaler.dynamicPixelsPerUnit -= 1;
+        audio.volume = 1f;
+        audio.Play();
     }
 
     public void ExitIntroAnimation() {
         animator.SetBool("targetHasBeenFound", false);
+        audio.volume = 0f;
+        audio.Stop();
     }
 }
