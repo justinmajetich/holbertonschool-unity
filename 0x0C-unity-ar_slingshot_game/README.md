@@ -31,4 +31,6 @@ Simple Toon, shader by Dmitry Chalovskiy via [Unity Asset Store](https://assetst
 
 Beer Bottle, 3D model by Eyouel Kassahun via [CGTrader](https://www.cgtrader.com/free-3d-models/food/beverage/beer-bottle-5d33e0ea-9438-4d08-97fc-f153214ff087)
 
-Low Poly Rock, 3D model by natasadikic04 [CGTrader](https://www.cgtrader.com/free-3d-models/various/various-models/low-poly-rock-6ba75afe-0323-46c5-a46b-618b626302f9)
+Low Poly Rock, 3D model by natasadikic04 via [CGTrader](https://www.cgtrader.com/free-3d-models/various/various-models/low-poly-rock-6ba75afe-0323-46c5-a46b-618b626302f9)
+
+BALOO, font by EK Type via [FontSquirrel](https://www.fontsquirrel.com/fonts/baloo)
