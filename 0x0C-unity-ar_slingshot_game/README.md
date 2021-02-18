@@ -25,7 +25,7 @@ Download one of the following compressed files to install the game on your devic
 
 Glass shatter particle system and shard 3D models. Target movement.
 
-## Unoriginal Assets
+## Asset Credits
 
 Simple Toon, shader by Dmitry Chalovskiy via [Unity Asset Store](https://assetstore.unity.com/packages/vfx/shaders/simple-toon-185038)
 
