@@ -13,6 +13,14 @@ This game was built for a project in Holberton School's AR/VR Specialization cur
 
 ## Examples
 
+## Downloads
+
+Download one of the following compressed files to install the game on your device of choice.
+
+- [Android APK](https://drive.google.com/file/d/1-ZsnYmRaxK3keVd6j8-e-wvoG2fXi0Tw/view?usp=sharing)
+
+- [iOS Build Files](https://drive.google.com/file/d/1jhHqfcCUm_0Vr_afZ9s6T5bD98Zytdtw/view?usp=sharing) (must be compiled and installed to phone via XCode)
+
 ## Project Highlights
 
 Glass shatter particle system and shard 3D models. Target movement.
