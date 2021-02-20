@@ -1,4 +1,4 @@
-# AR Slingshot Game
+# Rock Bottom - AR Slingshot Game
 
 This game was built for a project in Holberton School's AR/VR Specialization curriculum.
 
