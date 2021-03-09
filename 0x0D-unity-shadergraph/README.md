@@ -2,6 +2,8 @@
 
 This project contains a collection of shaders and example materials create for a project at Holberton School. Shaders are free to use in all contexts.
 
+Download the package: [0x0D-unity-shaders](https://drive.google.com/file/d/1msN_Yg3sQ-UTh0kYlFk0dTV8NtIMHAzI/view?usp=sharing)
+
 ## Glow
 
 Simple rim glow with parameters to control color, size, and strength.
