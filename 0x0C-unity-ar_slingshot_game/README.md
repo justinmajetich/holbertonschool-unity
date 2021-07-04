@@ -1,6 +1,6 @@
 # Rock Bottom - AR Slingshot Game
 
-This game was built for a project in Holberton School's AR/VR Specialization curriculum.
+AR Slingshot is an augmented reality game for Android and iOS devices in which a player launches physics-based projectiles at 3D targets integrated onto real-world surfaces. It was made in Unity using AR Foundation.
 
 ## How To Play
 
